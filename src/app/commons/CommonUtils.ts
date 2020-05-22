@@ -16,8 +16,8 @@ export class CommonUtils{
             }
         }
         searchObjList.sort(this.sortCompare);
-        for(var j of searchObjList){
-            list.push(j.Name);
+        for(var j=0; j<searchObjList.length; ++j){
+            list.push(searchObjList[j].Name);
         }
         return list;
     }
@@ -37,5 +37,31 @@ export class CommonUtils{
           return -1;
         }
         return 0;
+      }
+
+      showDropDown(searchBox: { nativeElement: any; }, clicker: { nativeElement: any; }, dropDown: { nativeElement: any; }){
+        searchBox.nativeElement.style.display="inline-block";
+        clicker.nativeElement.style.display="none";
+        searchBox.nativeElement.focus();
+        dropDown.nativeElement.style.display="flex";
+        dropDown.nativeElement.style.position="absolute";
+        var formMargin = getComputedStyle(dropDown.nativeElement.parentElement.parentElement).marginTop;
+        var searchBoxBottom = searchBox.nativeElement.getBoundingClientRect().bottom;
+        var dropDownTop = searchBoxBottom - parseInt(formMargin.substring(0,formMargin.indexOf("px")));
+        var dropDownWidth = searchBox.nativeElement.getBoundingClientRect().width;
+        dropDown.nativeElement.style.width=dropDownWidth+"px";
+        dropDown.nativeElement.style.top=dropDownTop+"px";
+      }
+
+      hideOtherControls(searchBox: { nativeElement: any; }, clicker: { nativeElement: any; }, dropDown: { nativeElement: any; }, list: string | any[], modelProperty: string){
+        if(event.target!=clicker.nativeElement && event.target!=searchBox.nativeElement){
+          clicker.nativeElement.style.display="inline-block";
+          searchBox.nativeElement.style.display="none";
+          dropDown.nativeElement.style.display="none";
+          if(!list.includes(modelProperty)){
+            modelProperty="";
+          } 
+          return modelProperty;
+        }
       }
 }

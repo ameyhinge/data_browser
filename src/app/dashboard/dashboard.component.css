@@ -54,6 +54,12 @@
     color: springgreen;
 }
 
+.game-series{
+    background-image: url("../../assets/game.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
 
 @media screen and (max-width:420px){
     .add-option-bar{

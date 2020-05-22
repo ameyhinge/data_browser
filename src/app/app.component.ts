@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'CGBrowserClient';
+  title = 'BrowserClient';
 
   constructor(private router: Router){
     document.body.style.margin="0";

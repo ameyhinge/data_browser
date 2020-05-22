@@ -96,6 +96,7 @@
     border: 1px solid springgreen;
     flex-direction: column;
     overflow-y: auto;
+    z-index: 2;
 }
 .drop-down-item{
     box-sizing: border-box;

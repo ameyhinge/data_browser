@@ -24,7 +24,7 @@ export class AddCharacterFormComponent implements OnInit {
     private commonUtils:CommonUtils,
     private menuDataService: MenuDataService
     ) {
-    this.selectedGame="Select a game series";
+    this.selectedGame="Select a game";
    }
 
   model = new Character("","","");
@@ -43,20 +43,14 @@ export class AddCharacterFormComponent implements OnInit {
   // Function to show/hide game series drop down
   public gameSearching: boolean;
   showDropDownGame(){
-    this.gameSearchBox.nativeElement.style.display="inline-block";
-    this.gameSearchClicker.nativeElement.style.display="none";
-    this.gameSearchBox.nativeElement.focus();
-    this.gameDropDown.nativeElement.style.display="flex";
+    this.commonUtils.showDropDown(this.gameSearchBox, this.gameSearchClicker,this.gameDropDown);
   }
 
   // Function to hide game series drop down if clicked outside
   hideOtherControls(){
-    if(event.target!=this.gameSearchClicker.nativeElement && event.target!=this.gameSearchBox.nativeElement){
-      this.gameSearchClicker.nativeElement.style.display="inline-block";
-      this.gameSearchBox.nativeElement.style.display="none";
-      this.gameDropDown.nativeElement.style.display="none";
-      this.gameSearching=false;
-      this.decideSearchBoxValue();
+    this.model.gameName = this.commonUtils.hideOtherControls(this.gameSearchBox,this.gameSearchClicker,this.gameDropDown,this.gameList,this.model.gameName);
+    if(this.model.gameName==""){
+      this.selectedGame="Select a game";
     }
   }
   
@@ -65,14 +59,7 @@ export class AddCharacterFormComponent implements OnInit {
   setGame($event: { target: { innerHTML: any; }; }){
     this.model.gameName=$event.target.innerHTML;
     this.selectedGame=this.model.gameName;
-  }
-
-  decideSearchBoxValue(){
-    if(this.gameList.includes(this.model.gameName)){
-      this.model.gameName="";
-      this.selectedGame="Select a game";
-    } 
-  }
+  } 
 
   onSearchType($event: { target: { value: string; }; key: string; }){
     this.gameList=this.commonUtils.controlDropDownSearch(this.receivedGameList,this.gameList,$event.target.value.trim());
