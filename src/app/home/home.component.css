@@ -1,0 +1,75 @@
+.search-box-container{
+    display: flex;
+    position: fixed;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-top: 3rem;
+    background-color:rgb(40, 40, 40);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.search-box-container > div{
+    margin-top:0.4rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+}
+.search-option-bar{
+    display: flex;
+    width: 80%;
+}
+.search-option-bar > div{
+    margin-left: 0.4rem;
+}
+.search-option{
+    transition: color 0.2s;
+}
+.search-option:hover{
+    color: springgreen;
+    cursor: pointer;
+}
+.search-option-active{
+    color: springgreen;
+}
+.search-div{
+    width: 80%;
+}
+.search-box{
+    height: 2.4rem;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid springgreen;
+    background-color: rgb(80, 80, 80);
+    color: rgba(240,240,240);
+    transition: background-color 0.2s;
+    padding: 0.4rem;
+    font-size: 1.1rem;
+}
+.search-box:focus{
+    outline: none;
+    border-width: 2px;
+    background-color: rgb(20, 20, 20);
+    box-shadow: 0.2rem 0.2rem 0.8rem 0.2rem rgba(0,0,0,0.5);
+}
+.result-box{
+    display: flex;
+    position: absolute;
+    z-index: -1;
+    align-items: center;
+    width: 100%;
+    margin-top: 9rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+.result-item{
+    min-height: 4rem;
+    width: 80%;
+    background-color: springgreen;
+}
+.padding-item{
+    min-height: 4rem;
+    width: 80%;
+}

@@ -1,0 +1,42 @@
+<form #addGameForm="ngForm" class="form-layout" (click)="hideOtherControls()">
+    <div class="top-label">Add Character</div>
+    <div class="control-group">
+        <div class="control-label">Game name</div>
+        <div class="validation-alert" *ngIf="gameName.invalid && (gameName.dirty || gameName.touched)">
+            Please select a valid game.
+        </div>
+        <div class="control">
+            <input (keyup)="onSearchType($event)" #gameSearchBox #gameName=ngModel [(ngModel)]="model.gameName" name="gameName" class="text-box" type="text" required />
+            <div tabindex="0" #gameSearchClicker (click)="showDropDownGame()" class="text-box">
+                {{selectedGame}}
+            </div>
+        </div>
+        <div #gameDropDown class="drop-down-box">
+            <div *ngFor="let game of gameList" (click)="setGame($event)" class="drop-down-item">
+                {{game}}
+            </div>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">Character first name</div>
+        <div class="validation-alert" *ngIf="characterFirstName.invalid && (characterFirstName.dirty || characterFirstName.touched)">
+            Please enter a valid first name.
+        </div>
+        <div class="control">
+            <input #characterFirstNameBox #characterFirstName=ngModel [(ngModel)]="model.characterFirstName" name="characterFirstName" class="text-box" type="text" required whiteSpaceValidator />
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">Character last name</div>
+        <div class="validation-alert" *ngIf="characterLastName.invalid && (characterLastName.dirty || characterLastName.touched)">
+            Please enter a valid last name.
+        </div>
+        <div class="control">
+            <input #characterLastNameBox #characterLastName=ngModel [(ngModel)]="model.characterLastName" name="characterLastName" class="text-box" type="text" required whiteSpaceValidator />
+        </div>
+    </div>
+    <div class="control-bar">
+        <input type="submit" class="submit-button"/>
+        <input type="button" class="button" value="Clear"/>
+    </div>
+</form>

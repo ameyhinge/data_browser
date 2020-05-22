@@ -1,0 +1,114 @@
+.app-container{
+    position: relative;
+    width: 100%;
+}
+.top-bar{
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    background-color: springgreen;
+    z-index: 99;
+}
+.title-link{
+    height: 100%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.title-link:hover{
+    color: red;
+    cursor: pointer;
+}
+.title-link:active{
+    color: crimson;
+}
+.holder{
+    min-width:3rem;
+    max-width: 3rem;
+    height: 100%;
+}
+.settings-button{
+    min-width:3rem;
+    max-width: 3rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    transition: background, color 0.2s,0.2s;
+    cursor: pointer;
+}
+.settings-button:hover{
+    background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5)), linear-gradient(springgreen,springgreen);
+    color: white;
+}
+.settings-button:active{
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), linear-gradient(springgreen,springgreen);
+    color: white;
+}
+
+/* Buttons */
+.submit-button, .button{
+    width: 6rem;
+    height: 2.4rem;
+    appearance: none;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    border-radius: 2rem;
+    background-color: springgreen;
+    transition: color 0.1s, background-color 0.1s, box-shadow 0.2s;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.button{
+    background-color: rgb(40, 40, 40);
+    color: white;
+}
+.submit-button:hover, .button:hover{  
+    cursor: pointer;
+    box-shadow:  0rem 0rem 0.2rem 0.1rem springgreen;
+}
+.button:hover{
+    box-shadow:  0rem 0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
+}
+.submit-button:active, .button:active{
+    box-shadow:  0rem 0rem 0.1rem 0.05rem springgreen;
+    color: white;
+}
+.button:active{
+    box-shadow: 0rem 0rem 0.1rem 0.05rem rgba(0, 0, 0, 0.5);
+    color: springgreen;
+}
+.submit-button:focus, .button:focus{
+    outline: none;
+}
+
+.drop-down-box{
+    min-height:12rem;
+    max-height: 12rem;
+    background-color: rgb(40, 40, 40);
+    box-sizing: border-box;
+    border: 1px solid springgreen;
+    flex-direction: column;
+    overflow-y: auto;
+}
+.drop-down-item{
+    box-sizing: border-box;
+    padding: 0.4rem;
+}
+.drop-down-item:hover{
+    background-color: rgba(0, 255, 128, 0.5);
+}
+.validation-alert{
+    width: 60%;
+    color: black;
+    background-color: rgb(255,255,0);
+    box-sizing: border-box;
+    padding: 0.4rem;
+    position: absolute;
+}
