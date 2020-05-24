@@ -12,6 +12,7 @@ import { WhiteSpaceValidator } from './custom-validator.directive';
 import { AddCharacterFormComponent } from './add-character-form/add-character-form.component';
 import { CommonUtils } from './commons/CommonUtils';
 import { MenuDataService } from './services/menu-data.service';
+import { SearchService } from './services/search-service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MenuDataService } from './services/menu-data.service';
   ],
   providers: [
     CommonUtils,
-    MenuDataService
+    MenuDataService,
+    SearchService
   ],
   bootstrap: [AppComponent]
 })
