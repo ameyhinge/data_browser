@@ -9,30 +9,43 @@
             <div (click)="setActive($event)" #searchOption class="search-option">Character</div>
             <div>|</div>
             <div (click)="setActive($event)" #searchOption class="search-option">Tags</div>
+            <div>|</div>
+            <div (click)="setActive($event)" #searchOption class="search-option">Advance Search</div>
         </div>
-        <div class="search-div">
+        <div #searchDiv class="search-div">
            <input (keyup)="searchKey($event)" type="text" #searchBox class="search-box" placeholder="type to search..."/> 
         </div>
+        <div #advSearchDiv class="adv-search-div">
+            <div class="adv-sec-div">
+                <div class="adv-row">
+                    <div class="adv-btn">+</div>
+                    <div class="option-drop-btn">Character</div>
+                </div>
+                <div class="adv-row">
+                    <div class="space"></div>
+                    <div class="adv-btn">+</div>
+                    <div class="option-drop-btn">Age</div>
+                    <div class="option-drop-btn">Greater then</div>
+                    <input type="text" class="adv-search"/>
+                </div>
+                
+                <div class="adv-row">
+                    <div class="adv-btn">+</div>
+                    <div class="option-drop-btn">Character</div>
+                </div>
+                <div class="adv-row">
+                    <div class="space"></div>
+                    <div class="adv-btn">+</div>
+                    <div class="option-drop-btn">Game</div>
+                    <div class="option-drop-btn">Contains</div>
+                    <input type="text" class="adv-search"/>
+                </div>
+            </div>
+        </div>      
     </div>
     <div class="result-box">
         <div class="result-item"></div>
         <div class="result-item"></div>
         <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="padding-item"></div>
     </div>
 </div>

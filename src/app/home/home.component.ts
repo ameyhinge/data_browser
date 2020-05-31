@@ -7,7 +7,12 @@ import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  optionList: String[] = ["Any", "Character", "Game"]; 
+  selectedOption = this.optionList[0];
+
   constructor() {}
+  @ViewChild('searchDiv') searchDiv;
+  @ViewChild('advSearchDiv') advSearchDiv;
   @ViewChild('searchBox') searchBox;
   @ViewChildren('searchOption') searchOptions;
   ngOnInit(): void {   
@@ -29,6 +34,13 @@ export class HomeComponent implements OnInit {
       if($event.target==s.nativeElement){
         $event.target.classList.add("search-option-active");
         this.activeOption = $event.target.innerHTML;
+      }
+      if($event.target.innerHTML==="Advance Search"){
+        this.searchDiv.nativeElement.style.display="none";
+        this.advSearchDiv.nativeElement.style.display="flex";
+      }else{
+        this.searchDiv.nativeElement.style.display="flex";
+        this.advSearchDiv.nativeElement.style.display="none";
       }
     }
     this.searchBox.nativeElement.focus();
