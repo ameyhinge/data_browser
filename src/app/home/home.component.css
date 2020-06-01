@@ -30,6 +30,7 @@
 }
 .search-div{
     width: 80%;
+    margin-top: 1rem;
 }
 .search-box{
     height: 2.4rem;
@@ -74,12 +75,12 @@
     display: flex;
     width: 80%;
     justify-content: flex-start;
+    flex-direction: column;
+    margin-top: 1rem;
 }
 .adv-sec-div{
     width: 100%;
-    margin-top: 5rem;
     border: 1px solid springgreen;
-    margin-bottom: 0.8rem;
 }
 .adv-row{
     width: 100%;
@@ -92,11 +93,19 @@
 }
 .option-drop-btn{
     display: flex;
-    width: 10%;
     align-items: center;
+    justify-content: space-between;
     cursor: pointer;
     box-sizing: border-box;
-    margin-left: 0.8rem;
+    background-color: rgba(255,255,255,0.1);
+    box-shadow: 0.2rem 0.2rem 0.8rem 0.2rem rgba(0,0,0,0.5);
+    box-sizing: border-box;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    margin-right: 0.4rem;
+    min-height: 2rem;
+    max-height: 2rem;
+    width: 100%;
 }
 .adv-btn{
     display: flex;
@@ -111,17 +120,21 @@
     border: 2px solid white;
     font-size: 1.6rem;
     cursor: pointer;
-    margin-left: 0.8rem;
-}
-.space{
-    margin-left: 0.8rem;
-    min-width: 2rem;
-    max-width: 2rem;
 }
 .adv-search{
-    width: 90%;
+    width: 100%;
     min-height: 2rem;
     max-height: 2rem;
     box-sizing: border-box;
-    margin-left: 0.8rem;
+    margin-right: 0.4rem;
+}
+.adv-lbl, .adv-lbl-btn{
+    display: flex;
+    min-height: 2rem;
+    max-height: 2rem;
+    width: 23%;
+    align-items: center;
+}
+.adv-lbl-btn{
+    width: 8%;
 }

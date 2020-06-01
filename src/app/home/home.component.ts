@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { CommonUtils } from '../commons/CommonUtils';
 
 @Component({
   selector: 'app-home',
@@ -7,14 +8,22 @@ import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  optionList: String[] = ["Any", "Character", "Game"]; 
+  optionList: string[] = ["Any", "Character", "Game"]; 
+  propertyList: string[] = ["Age", "Name"];
   selectedOption = this.optionList[0];
 
-  constructor() {}
+  constructor(private commonUtils: CommonUtils) {
+  }
+
   @ViewChild('searchDiv') searchDiv;
   @ViewChild('advSearchDiv') advSearchDiv;
   @ViewChild('searchBox') searchBox;
   @ViewChildren('searchOption') searchOptions;
+
+  //Property Search
+  @ViewChild('propertySearchBox') propertySearchBox;
+  @ViewChild('propertySearchClicker') propertySearchClicker;
+  @ViewChild('propertyDropDown') propertyDropDown;
   ngOnInit(): void {   
     
   }
@@ -26,6 +35,10 @@ export class HomeComponent implements OnInit {
       this.activeOption = s.nativeElement.innerHTML;
       break;
     }
+    //Propert Search
+    this.propertySearchBox.nativeElement.style.display="none";
+    this.propertyDropDown.nativeElement.style.display="none";
+    
   }
 
   setActive($event){
@@ -50,4 +63,13 @@ export class HomeComponent implements OnInit {
     console.log($event.target.value);
   }
 
+  // Function to show/hide property drop down
+  showDropDownProperty(){
+      this.commonUtils.showDropDown(this.propertySearchBox,this.propertySearchClicker,this.propertyDropDown);
+  }
+
+  // Function to hide property drop down if clicked outside
+  hideOtherControls(){
+    this.commonUtils.hideOtherControls(this.propertySearchBox,this.propertySearchClicker,this.propertyDropDown,this.propertyList,this.propertyList[0]);
+  }
 }

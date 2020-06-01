@@ -45,17 +45,16 @@ export class CommonUtils{
         searchBox.nativeElement.focus();
         dropDown.nativeElement.style.display="flex";
         dropDown.nativeElement.style.position="absolute";
-        var formMargin = getComputedStyle(dropDown.nativeElement.parentElement.parentElement).marginTop;
         var searchBoxBottom = searchBox.nativeElement.getBoundingClientRect().bottom;
-        var dropDownTop = searchBoxBottom - parseInt(formMargin.substring(0,formMargin.indexOf("px")));
+        console.log("bottom of search: " + searchBoxBottom);
         var dropDownWidth = searchBox.nativeElement.getBoundingClientRect().width;
         dropDown.nativeElement.style.width=dropDownWidth+"px";
-        dropDown.nativeElement.style.top=dropDownTop+"px";
+        dropDown.nativeElement.style.top=searchBoxBottom+"px";
       }
 
       hideOtherControls(searchBox: { nativeElement: any; }, clicker: { nativeElement: any; }, dropDown: { nativeElement: any; }, list: string | any[], modelProperty: string){
         if(event.target!=clicker.nativeElement && event.target!=searchBox.nativeElement){
-          clicker.nativeElement.style.display="inline-block";
+          clicker.nativeElement.style.display="flex";
           searchBox.nativeElement.style.display="none";
           dropDown.nativeElement.style.display="none";
           if(!list.includes(modelProperty)){
