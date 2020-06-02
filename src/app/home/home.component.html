@@ -18,17 +18,18 @@
         <div #advSearchDiv class="adv-search-div">
             <div class="adv-sec-div">
                 <div class="adv-row title-row">
-                    <div class="adv-lbl-btn">Add</div>
+                    <div class="adv-lbl-btn">Modify</div>
                     <div class="adv-lbl">Entity</div>
                     <div class="adv-lbl">Property</div>
                     <div class="adv-lbl">Condition</div>
                     <div class="adv-lbl">Value</div>
                 </div>
             </div>
-            <div class="adv-sec-div">
+            <div class="adv-sec-div" *ngFor="let row of rowList">
                 <div class="adv-row">
                     <div class="adv-lbl-btn">
-                        <div class="adv-btn">+</div>
+                        <div class="adv-btn" (click)="rowList.push('row')">+</div>
+                        <div class="adv-btn" (click)="rowList.push('row')">-</div>
                     </div>
                     <div class="adv-lbl">
                         <div tabindex="0" class="option-drop-btn">
@@ -36,9 +37,9 @@
                             <span>^</span>
                         </div>
                     </div>
-                    <div class="adv-lbl">
+                    <div class="adv-lbl control-div">
                         <input type="text" class="adv-search" #propertySearchBox/>
-                        <div tabindex="0" #propertySearchClicker (click)="showDropDownProperty()" class="option-drop-btn">
+                        <div tabindex="0" #propertySearchClicker (click)="showDropDownProperty($event)" class="option-drop-btn">
                             <span>Age</span>
                             <span>^</span>
                         </div>

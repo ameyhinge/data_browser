@@ -12,33 +12,32 @@ export class HomeComponent implements OnInit {
   propertyList: string[] = ["Age", "Name"];
   selectedOption = this.optionList[0];
 
+  rowList: String[] = ["row","row"];
+
   constructor(private commonUtils: CommonUtils) {
   }
 
+  // Main Search
   @ViewChild('searchDiv') searchDiv;
   @ViewChild('advSearchDiv') advSearchDiv;
   @ViewChild('searchBox') searchBox;
   @ViewChildren('searchOption') searchOptions;
 
-  //Property Search
-  @ViewChild('propertySearchBox') propertySearchBox;
-  @ViewChild('propertySearchClicker') propertySearchClicker;
-  @ViewChild('propertyDropDown') propertyDropDown;
   ngOnInit(): void {   
     
   }
+  
   activeOption: string;
   ngAfterViewInit(){
     this.searchBox.nativeElement.focus();
+    this.advSearchDiv.nativeElement.style.display="none";
+
+    // Set search option
     for(var s of this.searchOptions){
       s.nativeElement.classList.add("search-option-active");
       this.activeOption = s.nativeElement.innerHTML;
       break;
     }
-    //Propert Search
-    this.propertySearchBox.nativeElement.style.display="none";
-    this.propertyDropDown.nativeElement.style.display="none";
-    
   }
 
   setActive($event){
@@ -51,7 +50,7 @@ export class HomeComponent implements OnInit {
       if($event.target.innerHTML==="Advance Search"){
         this.searchDiv.nativeElement.style.display="none";
         this.advSearchDiv.nativeElement.style.display="flex";
-      }else{
+      } else{
         this.searchDiv.nativeElement.style.display="flex";
         this.advSearchDiv.nativeElement.style.display="none";
       }
@@ -64,12 +63,22 @@ export class HomeComponent implements OnInit {
   }
 
   // Function to show/hide property drop down
-  showDropDownProperty(){
-      this.commonUtils.showDropDown(this.propertySearchBox,this.propertySearchClicker,this.propertyDropDown);
+  showDropDownProperty(e: { target }){
+    this.commonUtils.showDropDown(e.target.previousElementSibling, e.target, e.target.nextElementSibling);
   }
 
   // Function to hide property drop down if clicked outside
   hideOtherControls(){
-    this.commonUtils.hideOtherControls(this.propertySearchBox,this.propertySearchClicker,this.propertyDropDown,this.propertyList,this.propertyList[0]);
+    var advSection = this.advSearchDiv.nativeElement;
+    for(var v=1; v< advSection.children.length; v++){
+      for(let s of advSection.children[v].children){
+        for(let x of s.children){
+          if(x.classList.contains("control-div")){ 
+            this.commonUtils.hideOtherControls(x.children[0],x.children[1],x.children[2],this.propertyList,"fsf");
+          }
+        }
+      }
+    }
   }
+
 }

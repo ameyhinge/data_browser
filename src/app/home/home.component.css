@@ -80,7 +80,7 @@
 }
 .adv-sec-div{
     width: 100%;
-    border: 1px solid springgreen;
+    border: 1px solid rgba(0, 255, 127,0.2);
 }
 .adv-row{
     width: 100%;
@@ -90,6 +90,9 @@
     height: 3rem;
     box-sizing: border-box;
     padding: 0.4rem;
+}
+.title-row{
+    background-color: rgba(0, 255, 127,0.2);
 }
 .option-drop-btn{
     display: flex;
@@ -109,16 +112,16 @@
 }
 .adv-btn{
     display: flex;
-    min-width: 2rem;
-    max-width: 2rem;
-    min-height: 2rem;
-    max-height: 2rem;
+    min-width: 1.6rem;
+    max-width: 1.6rem;
+    min-height: 1.6rem;
+    max-height: 1.6rem;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    margin-right: 0.4rem;
     border-radius: 1.2rem;
     border: 2px solid white;
-    font-size: 1.6rem;
     cursor: pointer;
 }
 .adv-search{

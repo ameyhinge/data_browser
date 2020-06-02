@@ -39,24 +39,23 @@ export class CommonUtils{
         return 0;
       }
 
-      showDropDown(searchBox: { nativeElement: any; }, clicker: { nativeElement: any; }, dropDown: { nativeElement: any; }){
-        searchBox.nativeElement.style.display="inline-block";
-        clicker.nativeElement.style.display="none";
-        searchBox.nativeElement.focus();
-        dropDown.nativeElement.style.display="flex";
-        dropDown.nativeElement.style.position="absolute";
-        var searchBoxBottom = searchBox.nativeElement.getBoundingClientRect().bottom;
-        console.log("bottom of search: " + searchBoxBottom);
-        var dropDownWidth = searchBox.nativeElement.getBoundingClientRect().width;
-        dropDown.nativeElement.style.width=dropDownWidth+"px";
-        dropDown.nativeElement.style.top=searchBoxBottom+"px";
+      showDropDown(searchBox, clicker, dropDown){
+        searchBox.style.display="inline-block";
+        clicker.style.display="none";
+        searchBox.focus();
+        dropDown.style.display="flex";
+        dropDown.style.position="absolute";
+        var searchBoxBottom = searchBox.offsetHeight + searchBox.offsetTop;
+        var dropDownWidth = searchBox.getBoundingClientRect().width;
+        dropDown.style.width=dropDownWidth+"px";
+        dropDown.style.top=searchBoxBottom+"px";
       }
 
-      hideOtherControls(searchBox: { nativeElement: any; }, clicker: { nativeElement: any; }, dropDown: { nativeElement: any; }, list: string | any[], modelProperty: string){
-        if(event.target!=clicker.nativeElement && event.target!=searchBox.nativeElement){
-          clicker.nativeElement.style.display="flex";
-          searchBox.nativeElement.style.display="none";
-          dropDown.nativeElement.style.display="none";
+      hideOtherControls(searchBox, clicker, dropDown, list: string | any[], modelProperty: string){
+        if(event.target!=clicker && event.target!=searchBox){
+          clicker.style.display="flex";
+          searchBox.style.display="none";
+          dropDown.style.display="none";
           if(!list.includes(modelProperty)){
             modelProperty="";
           } 

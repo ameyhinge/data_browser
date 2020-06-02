@@ -44,12 +44,12 @@ export class AddGameFormComponent implements OnInit {
   // Function to show/hide game series drop down
   public gameSeriesSearching: boolean;
   showDropDownGameSeries(){
-    this.commonUtils.showDropDown(this.gameSeriesSearchBox,this.gameSeriesSearchClicker,this.gameSeriesDropDown);
+    this.commonUtils.showDropDown(this.gameSeriesSearchBox.nativeElement,this.gameSeriesSearchClicker.nativeElement,this.gameSeriesDropDown.nativeElement);
   }
 
   // Function to hide game series drop down if clicked outside
   hideOtherControls(){
-    this .model.gameSeries = this.commonUtils.hideOtherControls(this.gameSeriesSearchBox,this.gameSeriesSearchClicker,this.gameSeriesDropDown,this.gameSeriesList,this.model.gameSeries);
+    this .model.gameSeries = this.commonUtils.hideOtherControls(this.gameSeriesSearchBox.nativeElement,this.gameSeriesSearchClicker.nativeElement,this.gameSeriesDropDown.nativeElement,this.gameSeriesList,this.model.gameSeries);
     if(this.model.gameSeries==""){
       this.selectedGameSeries="Select a game series";
     }
