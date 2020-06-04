@@ -1,6 +1,5 @@
 .search-box-container{
     display: flex;
-   /* position: fixed; */
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -17,9 +16,11 @@
 }
 .search-option-bar > div{
     margin-left: 0.4rem;
+    margin-right: 0.4rem;
 }
 .search-option{
     transition: color 0.2s;
+    border-bottom: 1px solid transparent;
 }
 .search-option:hover{
     color: springgreen;
@@ -27,27 +28,25 @@
 }
 .search-option-active{
     color: springgreen;
+    border-bottom: 1px solid springgreen;
 }
 .search-div{
     width: 80%;
     margin-top: 1rem;
 }
-.search-box{
+.search-box, .adv-search{
     height: 2.4rem;
     width: 100%;
-    box-sizing: border-box;
-    border: 1px solid springgreen;
-    background-color: rgb(80, 80, 80);
-    color: rgba(240,240,240);
+    border: 1px solid rgba(0, 255, 127,0.5);
     transition: background-color 0.2s;
     padding: 0.4rem;
     font-size: 1.1rem;
 }
-.search-box:focus{
+.search-box:focus, .adv-search:focus, .option-drop-btn:focus, .adv-btn:focus{
     outline: none;
-    border-width: 2px;
     background-color: rgb(20, 20, 20);
     box-shadow: 0.2rem 0.2rem 0.8rem 0.2rem rgba(0,0,0,0.5);
+    border-color: springgreen;
 }
 .result-box{
     display: none;
@@ -101,7 +100,7 @@
     cursor: pointer;
     box-sizing: border-box;
     background-color: rgba(255,255,255,0.1);
-    box-shadow: 0.2rem 0.2rem 0.8rem 0.2rem rgba(0,0,0,0.5);
+    border: 1px solid rgba(0, 255, 127, 0.5);
     box-sizing: border-box;
     padding-left: 0.4rem;
     padding-right: 0.4rem;
@@ -124,6 +123,16 @@
     border: 2px solid white;
     cursor: pointer;
 }
+.adv-btn:hover{
+    border-color: springgreen;
+}
+.adv-btn:active{
+    background-color: rgba(0, 255, 127, 0.5);
+}
+.submit-button{
+    min-height: 2rem;
+    max-height: 2rem;
+}
 .adv-search{
     width: 100%;
     min-height: 2rem;
@@ -131,13 +140,18 @@
     box-sizing: border-box;
     margin-right: 0.4rem;
 }
-.adv-lbl, .adv-lbl-btn{
+.adv-lbl, .adv-lbl-small{
     display: flex;
     min-height: 2rem;
     max-height: 2rem;
-    width: 23%;
+    width: 20%;
     align-items: center;
 }
-.adv-lbl-btn{
+.adv-lbl-small{
     width: 8%;
+}
+.align-right{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
 }

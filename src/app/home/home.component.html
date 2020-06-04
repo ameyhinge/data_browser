@@ -1,59 +1,75 @@
 
 <div class="data-section" (click)="hideOtherControls()">
     <div class="search-box-container">
-        <div class="search-option-bar">
-            <div (click)="setActive($event)" #searchOption class="search-option">Any</div>
-            <div>|</div>
-            <div (click)="setActive($event)" #searchOption class="search-option">Game</div>
-            <div>|</div>
-            <div (click)="setActive($event)" #searchOption class="search-option">Character</div>
-            <div>|</div>
-            <div (click)="setActive($event)" #searchOption class="search-option">Tags</div>
-            <div>|</div>
-            <div (click)="setActive($event)" #searchOption class="search-option">Advance Search</div>
+        <div #searchOptions class="search-option-bar">
+            <div *ngFor="let menu of searchMenu" (click)="setActive($event, menu)" class="search-option">
+                {{menu}}
+            </div> 
         </div>
-        <div #searchDiv class="search-div">
+        <div *ngIf="activeOption!=='Advanced Search'" #searchDiv class="search-div">
            <input (keyup)="searchKey($event)" type="text" #searchBox class="search-box" placeholder="type to search..."/> 
         </div>
-        <div #advSearchDiv class="adv-search-div">
+        <div *ngIf="activeOption==='Advanced Search'" #advSearchDiv class="adv-search-div">
             <div class="adv-sec-div">
                 <div class="adv-row title-row">
-                    <div class="adv-lbl-btn">Modify</div>
-                    <div class="adv-lbl">Entity</div>
-                    <div class="adv-lbl">Property</div>
-                    <div class="adv-lbl">Condition</div>
-                    <div class="adv-lbl">Value</div>
+                    <div *ngFor="let col of columnNameList" [ngClass]="{'adv-lbl-small': columnSpList.includes(col)}" class="adv-lbl">
+                        {{col}}
+                    </div>
                 </div>
             </div>
             <div class="adv-sec-div" *ngFor="let row of rowList">
                 <div class="adv-row">
-                    <div class="adv-lbl-btn">
-                        <div class="adv-btn" (click)="rowList.push('row')">+</div>
-                        <div class="adv-btn" (click)="rowList.push('row')">-</div>
+                    <div class="adv-lbl-small control-div">
+                        <div tabindex="0" class="option-drop-btn clicker" (click)="showDropDown($event)" >
+                            <span>And</span><span>^</span>
+                        </div>
+                        <div class="drop-down-box">
+                            <div *ngFor="let logic of logicOpList" class="drop-down-item" (click)="setDropDownValue($event)">
+                                {{logic}}
+                            </div>
+                        </div>
                     </div>
-                    <div class="adv-lbl">
-                        <div tabindex="0" class="option-drop-btn">
-                            <span>Character</span>
-                            <span>^</span>
+                    <div class="adv-lbl-small">
+                        <input type="text" class="adv-search"/>
+                    </div>
+                    <div class="adv-lbl control-div">
+                        <div tabindex="0" class="option-drop-btn clicker" (click)="showDropDown($event)">
+                            <span>Character</span><span>^</span>
+                        </div>
+                        <div class="drop-down-box">
+                            <div *ngFor="let opt of optionList" class="drop-down-item" (click)="setDropDownValue($event)">
+                                {{opt}}
+                            </div>
                         </div>
                     </div>
                     <div class="adv-lbl control-div">
-                        <input type="text" class="adv-search" #propertySearchBox/>
-                        <div tabindex="0" #propertySearchClicker (click)="showDropDownProperty($event)" class="option-drop-btn">
-                            <span>Age</span>
-                            <span>^</span>
+                        <input type="text" class="adv-search"/>
+                        <div tabindex="0" class="option-drop-btn clicker" (click)="showDropDown($event)" >
+                            <span>Age</span><span>^</span>
                         </div>
-                        <div #propertyDropDown class="drop-down-box"></div>
+                        <div class="drop-down-box"></div>
                     </div>
-                    <div class="adv-lbl">
-                        <div tabindex="0" class="option-drop-btn">
-                            <span>Greater then</span>
-                            <span>^</span>
+                    <div class="adv-lbl control-div">
+                        <div tabindex="0" class="option-drop-btn clicker" (click)="showDropDown($event)">
+                            <span>{{propertyType.Integer[0]}}</span><span>^</span>
                         </div>
+                        <div class="drop-down-box"></div>
                     </div>
                     <div class="adv-lbl">
                         <input type="text" class="adv-search"/>
-                    </div>           
+                    </div>  
+                    <div class="adv-lbl-small">
+                        <input type="text" class="adv-search"/>
+                    </div>         
+                </div>
+            </div>
+            <div class="adv-sec-div">
+                <div class="adv-row">
+                    <div tabindex="0" class="adv-btn" (click)="modifyRows('+')">+</div>
+                    <div tabindex="0" *ngIf="rowList.length>1" class="adv-btn" (click)="modifyRows('-')">-</div>
+                    <div class="align-right">
+                        <input type="submit" class="submit-button" (click)="queryBuilder()"/>
+                    </div>
                 </div>
             </div>
         </div>      

@@ -43,8 +43,9 @@ export class AddGameFormComponent implements OnInit {
   
   // Function to show/hide game series drop down
   public gameSeriesSearching: boolean;
-  showDropDownGameSeries(){
+  showDropDownGameSeries(e){
     this.commonUtils.showDropDown(this.gameSeriesSearchBox.nativeElement,this.gameSeriesSearchClicker.nativeElement,this.gameSeriesDropDown.nativeElement);
+    e.stopPropagation();
   }
 
   // Function to hide game series drop down if clicked outside

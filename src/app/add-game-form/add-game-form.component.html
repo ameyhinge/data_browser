@@ -7,7 +7,7 @@
         </div>
         <div class="control">
             <input (keyup)="onSearchType($event)" #gameSeriesSearchBox #gameSeries=ngModel [(ngModel)]="model.gameSeries" name="gameSeries" class="text-box" type="text" required />
-            <div tabindex="0" #gameSeriesSearchClicker (click)="showDropDownGameSeries()" class="text-box">
+            <div tabindex="0" #gameSeriesSearchClicker (click)="showDropDownGameSeries($event)" class="text-box">
                 {{selectedGameSeries}}
             </div>
         </div>

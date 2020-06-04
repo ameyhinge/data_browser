@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { CommonUtils } from '../commons/CommonUtils';
+import { queryObject } from './queryListObject';
 
 @Component({
   selector: 'app-home',
@@ -8,20 +9,30 @@ import { CommonUtils } from '../commons/CommonUtils';
 })
 export class HomeComponent implements OnInit {
 
-  optionList: string[] = ["Any", "Character", "Game"]; 
+  optionList: string[] = ["Character", "Game"]; 
   propertyList: string[] = ["Age", "Name"];
-  selectedOption = this.optionList[0];
+  searchMenu: string[] = ["Any", "Game", "Character", "Tags", "Advanced Search"];
+  columnNameList: string[] = ["Op", "(", "Entity", "Property", "Condition", "Value", ")"];
+  columnSpList: string[] = ["Op", "(", ")"];
+  logicOpList: string[] = ["And", "Or"];
+  rowList = [0];
 
-  rowList: String[] = ["row","row"];
+  propertyType = {
+    "Integer": ["Equal to", "Not equal to", "Greater then", "Less then", "Greater then or equal to", "Less then or equal to"],
+    "String" : ["Contains", "Does not contain", "Starts with", "Ends with"]
+  }
 
+  queryList: queryObject[];
+   
   constructor(private commonUtils: CommonUtils) {
+
   }
 
   // Main Search
   @ViewChild('searchDiv') searchDiv;
   @ViewChild('advSearchDiv') advSearchDiv;
   @ViewChild('searchBox') searchBox;
-  @ViewChildren('searchOption') searchOptions;
+  @ViewChild('searchOptions') searchOptions;
 
   ngOnInit(): void {   
     
@@ -30,29 +41,17 @@ export class HomeComponent implements OnInit {
   activeOption: string;
   ngAfterViewInit(){
     this.searchBox.nativeElement.focus();
-    this.advSearchDiv.nativeElement.style.display="none";
-
     // Set search option
-    for(var s of this.searchOptions){
-      s.nativeElement.classList.add("search-option-active");
-      this.activeOption = s.nativeElement.innerHTML;
-      break;
-    }
+    this.searchOptions.nativeElement.children[0].classList.add("search-option-active");
+    this.activeOption = this.searchMenu[0]; 
   }
 
-  setActive($event){
-    for(var s of this.searchOptions){
-      s.nativeElement.classList.remove("search-option-active");
-      if($event.target==s.nativeElement){
+  setActive($event, menu){
+    for(var s of this.searchOptions.nativeElement.children){
+      s.classList.remove("search-option-active");
+      if($event.target==s){
         $event.target.classList.add("search-option-active");
-        this.activeOption = $event.target.innerHTML;
-      }
-      if($event.target.innerHTML==="Advance Search"){
-        this.searchDiv.nativeElement.style.display="none";
-        this.advSearchDiv.nativeElement.style.display="flex";
-      } else{
-        this.searchDiv.nativeElement.style.display="flex";
-        this.advSearchDiv.nativeElement.style.display="none";
+        this.activeOption = menu;
       }
     }
     this.searchBox.nativeElement.focus();
@@ -63,8 +62,13 @@ export class HomeComponent implements OnInit {
   }
 
   // Function to show/hide property drop down
-  showDropDownProperty(e: { target }){
-    this.commonUtils.showDropDown(e.target.previousElementSibling, e.target, e.target.nextElementSibling);
+  showDropDown(e){
+    var dropDown = e.target;
+    if(!dropDown.classList.contains("clicker")){
+      dropDown = e.target.parentElement;
+    } 
+    this.commonUtils.showDropDown(dropDown.previousElementSibling, dropDown, dropDown.nextElementSibling);
+    e.stopPropagation();
   }
 
   // Function to hide property drop down if clicked outside
@@ -74,11 +78,38 @@ export class HomeComponent implements OnInit {
       for(let s of advSection.children[v].children){
         for(let x of s.children){
           if(x.classList.contains("control-div")){ 
-            this.commonUtils.hideOtherControls(x.children[0],x.children[1],x.children[2],this.propertyList,"fsf");
+            var searchBox, clicker, dropDown;
+            for(let ele of x.children){
+              if(ele.classList.contains("adv-search")){
+                searchBox=ele;
+              }else if(ele.classList.contains("clicker")){
+                clicker=ele;
+              }else if(ele.classList.contains("drop-down-box")){
+                dropDown=ele;
+              }
+            }
+            this.commonUtils.hideOtherControls(searchBox, clicker, dropDown, this.propertyList, "fsf");
           }
         }
       }
     }
+  }
+
+  // Function to handle insertion or deletion of row
+  modifyRows(e: string){  
+    if(e==="+"){
+      this.rowList.push(this.rowList.length);
+    }else if(e==="-"){
+      this.rowList.pop();
+    }
+  }
+
+  setDropDownValue(e){
+    e.target.parentElement.previousElementSibling.children[0].innerHTML = e.target.innerHTML;
+  }
+
+  queryBuilder(){
+    alert("dkj")
   }
 
 }

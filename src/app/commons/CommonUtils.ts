@@ -40,21 +40,25 @@ export class CommonUtils{
       }
 
       showDropDown(searchBox, clicker, dropDown){
-        searchBox.style.display="inline-block";
-        clicker.style.display="none";
-        searchBox.focus();
         dropDown.style.display="flex";
         dropDown.style.position="absolute";
-        var searchBoxBottom = searchBox.offsetHeight + searchBox.offsetTop;
-        var dropDownWidth = searchBox.getBoundingClientRect().width;
+        var searchBoxBottom = clicker.offsetHeight + clicker.offsetTop;
+        var dropDownWidth = clicker.getBoundingClientRect().width;
         dropDown.style.width=dropDownWidth+"px";
         dropDown.style.top=searchBoxBottom+"px";
+        if(searchBox!=null){
+          clicker.style.display="none";
+          searchBox.style.display="inline-block";
+          searchBox.focus();
+        }
       }
 
       hideOtherControls(searchBox, clicker, dropDown, list: string | any[], modelProperty: string){
-        if(event.target!=clicker && event.target!=searchBox){
+        if(event.target!=searchBox){
           clicker.style.display="flex";
-          searchBox.style.display="none";
+          if(searchBox!=null){
+            searchBox.style.display="none";
+          }
           dropDown.style.display="none";
           if(!list.includes(modelProperty)){
             modelProperty="";
