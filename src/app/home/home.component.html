@@ -11,7 +11,7 @@
         </div>
         <div *ngIf="activeOption==='Advanced Search'" #advSearchDiv class="adv-search-div">
             <div class="adv-sec-div">
-                <div class="adv-row title-row">
+                <div class="title-row">
                     <div *ngFor="let col of columnNameList" [ngClass]="{'adv-lbl-small': columnSpList.includes(col)}" class="adv-lbl">
                         {{col}}
                     </div>
