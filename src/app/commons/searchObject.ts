@@ -1,6 +1,6 @@
 export class SearchObject {
     constructor(
-        public Name: string,
+        public Name,
         public searchFullMatch: string,
         public searchMatchTill: number
     ){}

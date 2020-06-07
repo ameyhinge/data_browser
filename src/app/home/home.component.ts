@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { CommonUtils } from '../commons/CommonUtils';
 import { queryObject } from './queryListObject';
+import { SearchService } from '../services/search-service';
+import { searchResponse } from '../services/search-response';
 
 @Component({
   selector: 'app-home',
@@ -9,22 +11,40 @@ import { queryObject } from './queryListObject';
 })
 export class HomeComponent implements OnInit {
 
-  optionList: string[] = ["Character", "Game"]; 
-  propertyList: string[] = ["Age", "Name"];
   searchMenu: string[] = ["Any", "Game", "Character", "Tags", "Advanced Search"];
+
+  receivedSearchResults: searchResponse[] = [];
+  searchResults: searchResponse[] = [];
+
   columnNameList: string[] = ["Op", "(", "Entity", "Property", "Condition", "Value", ")"];
   columnSpList: string[] = ["Op", "(", ")"];
+  
   logicOpList: string[] = ["And", "Or"];
-  rowList = [0];
-
-  propertyType = {
+  entityMap = {
+    "Select": [],
+    "Game": [
+      {"Name": "String"}, 
+      {"Release Year": "Integer"}, 
+      {"Publisher": "String"}],
+    "Character": [
+      {"Name": "String"}, 
+      {"Age": "Integer"}]
+  }
+  entityList: string[] = [];
+  propertyList: string[] = []
+  conditionMap = {
     "Integer": ["Equal to", "Not equal to", "Greater then", "Less then", "Greater then or equal to", "Less then or equal to"],
     "String" : ["Contains", "Does not contain", "Starts with", "Ends with"]
   }
+  conditionList: string[] = [];
+  rowList = [0];
 
   queryList: queryObject[];
    
-  constructor(private commonUtils: CommonUtils) {
+  constructor(
+    private commonUtils: CommonUtils,
+    private searchService: SearchService
+    ) {
 
   }
 
@@ -32,10 +52,18 @@ export class HomeComponent implements OnInit {
   @ViewChild('searchDiv') searchDiv;
   @ViewChild('advSearchDiv') advSearchDiv;
   @ViewChild('searchBox') searchBox;
-  @ViewChild('searchOptions') searchOptions;
+  @ViewChild('searchOptions') searchOptions; 
 
+  o: searchResponse = {name:"Amey", entityType:"je", URL:"ksef"};
   ngOnInit(): void {   
-    
+    this.populateEntityList();
+
+    this.o.name="Amay";
+    this.receivedSearchResults.push(this.o);
+    this.o.name="Amay";
+    this.receivedSearchResults.push(this.o);
+    this.o.name="Amay";
+    this.receivedSearchResults.push(this.o);
   }
   
   activeOption: string;
@@ -58,7 +86,20 @@ export class HomeComponent implements OnInit {
   }
 
   searchKey($event){
-    console.log($event.target.value);
+    // If backspace is not pressed, first search in current search result buffer
+    if($event.key!=='Backspace' && $event.target.value.length>2){
+      if(this.searchResults.length==0){
+        this.searchService.getSearchResult(true,this.activeOption,$event.target.value.trim()).subscribe(
+          results=>this.receivedSearchResults = results
+        );
+      }
+      this.searchResults = this.commonUtils.mainSearch(this.receivedSearchResults,this.searchResults,$event.target.value.trim());      
+    }
+    else{
+      this.searchService.getSearchResult(true,this.activeOption,$event.target.value.trim()).subscribe(
+        results=>this.receivedSearchResults = results
+      );
+    }
   }
 
   // Function to show/hide property drop down
@@ -88,7 +129,7 @@ export class HomeComponent implements OnInit {
                 dropDown=ele;
               }
             }
-            this.commonUtils.hideOtherControls(searchBox, clicker, dropDown, this.propertyList, "fsf");
+            this.commonUtils.hideOtherControls(searchBox, clicker, dropDown, this.entityList, "fsf");
           }
         }
       }
@@ -106,6 +147,73 @@ export class HomeComponent implements OnInit {
 
   setDropDownValue(e){
     e.target.parentElement.previousElementSibling.children[0].innerHTML = e.target.innerHTML;
+  }
+
+  // Functions to populate query menu data
+  populateEntityList(){
+    for(var i in this.entityMap){
+      this.entityList.push(i);
+    }
+  }
+
+  // Function to handle query elements click
+  loadProperties(e){
+    this.propertyList = [];
+    var controlDiv = e.target.parentElement;
+    while(!controlDiv.classList.contains("control-div")){
+      controlDiv = controlDiv.parentElement;
+    }
+    controlDiv = controlDiv.previousElementSibling;
+    for(var c of controlDiv.children){
+      if(c.classList.contains("clicker")){
+        for(var entity of Object.keys(this.entityMap)){
+          if(entity===c.children[0].innerHTML.trim()){
+            for(var k of this.entityMap[entity]){
+              this.propertyList.push(Object.keys(k)[0]);
+            }
+            break;
+          }
+        }
+        break;
+      }
+    }
+    this.showDropDown(e);
+  }
+
+  loadConditions(e){
+    this.conditionList = [];
+    var controlDiv = e.target.parentElement;
+    while(!controlDiv.classList.contains("control-div")){
+      controlDiv = controlDiv.parentElement;
+    }
+    controlDiv = controlDiv.previousElementSibling;
+    // Get property
+    var selectedProperty;
+    for(var c of controlDiv.children){
+      if(c.classList.contains("clicker")){
+        selectedProperty = c.children[0].innerHTML.trim();
+        break;
+      }
+    }
+    // Get entity
+    controlDiv = controlDiv.previousElementSibling;
+    var selectedEntity;
+    for(var c of controlDiv.children){
+      if(c.classList.contains("clicker")){
+        selectedEntity = c.children[0].innerHTML.trim();
+        break;
+      }
+    }
+    // Get property type
+    for(var ent of this.entityMap[selectedEntity]){
+      for(var o of Object.keys(ent)){
+        if(o===selectedProperty){
+          this.conditionList = this.conditionMap[ent[o]];
+          break;
+        }
+      }
+    }
+    this.showDropDown(e);
   }
 
   queryBuilder(){

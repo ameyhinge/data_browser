@@ -1,5 +1,5 @@
 
-<div class="data-section" (click)="hideOtherControls()">
+<div class="data-section">
     <div class="search-box-container">
         <div #searchOptions class="search-option-bar">
             <div *ngFor="let menu of searchMenu" (click)="setActive($event, menu)" class="search-option">
@@ -9,7 +9,7 @@
         <div *ngIf="activeOption!=='Advanced Search'" #searchDiv class="search-div">
            <input (keyup)="searchKey($event)" type="text" #searchBox class="search-box" placeholder="type to search..."/> 
         </div>
-        <div *ngIf="activeOption==='Advanced Search'" #advSearchDiv class="adv-search-div">
+        <div *ngIf="activeOption==='Advanced Search'" #advSearchDiv class="adv-search-div" (click)="hideOtherControls()">
             <div class="adv-sec-div">
                 <div class="title-row">
                     <div *ngFor="let col of columnNameList" [ngClass]="{'adv-lbl-small': columnSpList.includes(col)}" class="adv-lbl">
@@ -34,26 +34,34 @@
                     </div>
                     <div class="adv-lbl control-div">
                         <div tabindex="0" class="option-drop-btn clicker" (click)="showDropDown($event)">
-                            <span>Character</span><span>^</span>
+                            <span>{{entityList[0]}}</span><span>^</span>
                         </div>
                         <div class="drop-down-box">
-                            <div *ngFor="let opt of optionList" class="drop-down-item" (click)="setDropDownValue($event)">
-                                {{opt}}
+                            <div *ngFor="let entity of entityList" class="drop-down-item" (click)="setDropDownValue($event)">
+                                {{entity}}
                             </div>
                         </div>
                     </div>
                     <div class="adv-lbl control-div">
                         <input type="text" class="adv-search"/>
-                        <div tabindex="0" class="option-drop-btn clicker" (click)="showDropDown($event)" >
+                        <div tabindex="0" class="option-drop-btn clicker" (click)="loadProperties($event)" >
                             <span>Age</span><span>^</span>
                         </div>
-                        <div class="drop-down-box"></div>
+                        <div class="drop-down-box">
+                            <div *ngFor="let prop of propertyList" class="drop-down-item" (click)="setDropDownValue($event)">
+                                {{prop}}
+                            </div>
+                        </div>
                     </div>
                     <div class="adv-lbl control-div">
-                        <div tabindex="0" class="option-drop-btn clicker" (click)="showDropDown($event)">
-                            <span>{{propertyType.Integer[0]}}</span><span>^</span>
+                        <div tabindex="0" class="option-drop-btn clicker" (click)="loadConditions($event)">
+                            <span>{{conditionMap.Integer[0]}}</span><span>^</span>
                         </div>
-                        <div class="drop-down-box"></div>
+                        <div class="drop-down-box">
+                            <div *ngFor="let con of conditionList" class="drop-down-item" (click)="setDropDownValue($event)">
+                                {{con}}
+                            </div>
+                        </div>
                     </div>
                     <div class="adv-lbl">
                         <input type="text" class="adv-search"/>
@@ -75,8 +83,6 @@
         </div>      
     </div>
     <div class="result-box">
-        <div class="result-item"></div>
-        <div class="result-item"></div>
-        <div class="result-item"></div>
+        <div *ngFor="let res of searchResults" class="result-item">{{res.name}}</div>
     </div>
 </div>
