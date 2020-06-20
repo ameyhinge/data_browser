@@ -39,6 +39,8 @@ export class HomeComponent implements OnInit {
   conditionList: string[] = [];
   rowList = [0];
 
+  gameSuggestion=["KKK", "sejhfgj", "skjdfuks"];
+
   queryList: queryObject[];
    
   constructor(

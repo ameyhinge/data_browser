@@ -20,10 +20,14 @@ input[type="text"]{
     background-color:rgb(40, 40, 40);
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 6rem;
     margin-bottom: 5rem;
+    padding-top: 6rem;
+}
+.data-section{
+    padding-top: 4rem;
 }
 .drop-down-box{
+    display: none;
     min-height:2rem;
     max-height: 12rem;
     background-color: rgb(40, 40, 40);
@@ -38,6 +42,7 @@ input[type="text"]{
     height: 3rem;
     width: 100%;
     display: flex;
+    position: fixed;
     justify-content: center;
     align-items: center;
     background-color: springgreen;

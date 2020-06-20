@@ -1,4 +1,4 @@
-.result-box, .search-box-container{
+.result-box, .search-box-container, .suggestion-box{
     display: flex;
     z-index: -1;
     align-items: center;
@@ -90,7 +90,7 @@
     border-color: springgreen;
 }
 
-.adv-row, .title-row, .result-item{
+.adv-row, .title-row, .result-item, .suggestion-row{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -102,9 +102,13 @@
 .title-row{
     background-color: rgba(0, 255, 127,0.2);
 }
-.result-item{
+.result-item, .suggestion-row{
     width: 80%;
     border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.suggestion-row{
+    border-bottom: none;
+    height: auto;
 }
 .result-item:hover{
     background-color: rgba(0,0,0,0.2);
@@ -130,4 +134,26 @@
 }
 .adv-lbl-small{
     width: 8%;
+}
+.suggestion-item{
+    height:12rem;
+    width: 9rem;
+    box-sizing: border-box;
+    margin: 0.2rem;
+    margin-right: 0.6rem;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    transition: border, box-shadow 0.2s, 0.2s;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-image: url("../../assets/default-pic.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.suggestion-item:hover{ 
+    box-shadow:  0rem 0rem 1.5rem 0.2rem rgba(0, 0, 0, 0.5);
+}
+.suggestion-item:active{
+    border: 1px solid springgreen;
+    box-shadow:  0rem 0rem 1rem 0.2rem rgba(0, 0, 0, 0.5);
 }

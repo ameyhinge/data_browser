@@ -38,6 +38,10 @@
     border-radius: 1rem;
     padding:0.5rem;
     transition: color 0.1s, background-color 0.1s, box-shadow 0.2s;
+    background-image: url("../../assets/default-pic.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
 }
 .add-option:hover{
     background-color: rgba(255,255,255,0.2);
@@ -51,9 +55,6 @@
 }
 .game-series{
     background-image: url("../../assets/game.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 60%;
 }
 
 @media screen and (max-width:420px){
