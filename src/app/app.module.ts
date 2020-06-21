@@ -13,6 +13,7 @@ import { AddCharacterFormComponent } from './add-character-form/add-character-fo
 import { CommonUtils } from './commons/CommonUtils';
 import { MenuDataService } from './services/menu-data.service';
 import { SearchService } from './services/search-service';
+import { GameViewComponent } from './game-view/game-view.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SearchService } from './services/search-service';
     DashboardComponent,
     AddGameFormComponent,
     WhiteSpaceValidator,
-    AddCharacterFormComponent
+    AddCharacterFormComponent,
+    GameViewComponent
   ],
   imports: [
     BrowserModule,

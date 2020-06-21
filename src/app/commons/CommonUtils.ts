@@ -84,7 +84,7 @@ export class CommonUtils{
           if(!list.includes(modelProperty)){
             modelProperty="";
           } 
-          return modelProperty;
         }
+        return modelProperty;
       }
 }

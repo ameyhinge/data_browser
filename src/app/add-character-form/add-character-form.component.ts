@@ -48,17 +48,17 @@ export class AddCharacterFormComponent implements OnInit {
   }
 
   // Function to hide game series drop down if clicked outside
+  public selectedGame: string;
+
   hideOtherControls(){
     this.model.gameName = this.commonUtils.hideOtherControls(this.gameSearchBox.nativeElement,this.gameSearchClicker.nativeElement,this.gameDropDown.nativeElement,this.gameList,this.model.gameName);
     if(this.model.gameName==""){
       this.selectedGame="Select a game";
     }
   }
-  
-  public selectedGame: string;
 
   setGame($event: { target: { innerHTML: any; }; }){
-    this.model.gameName=$event.target.innerHTML;
+    this.model.gameName=$event.target.innerHTML.trim();
     this.selectedGame=this.model.gameName;
   } 
 

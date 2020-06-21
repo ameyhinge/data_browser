@@ -49,17 +49,17 @@ export class AddGameFormComponent implements OnInit {
   }
 
   // Function to hide game series drop down if clicked outside
+  public selectedGameSeries: string;
+
   hideOtherControls(){
-    this .model.gameSeries = this.commonUtils.hideOtherControls(this.gameSeriesSearchBox.nativeElement,this.gameSeriesSearchClicker.nativeElement,this.gameSeriesDropDown.nativeElement,this.gameSeriesList,this.model.gameSeries);
+    this.model.gameSeries = this.commonUtils.hideOtherControls(this.gameSeriesSearchBox.nativeElement,this.gameSeriesSearchClicker.nativeElement,this.gameSeriesDropDown.nativeElement,this.gameSeriesList,this.model.gameSeries);
     if(this.model.gameSeries==""){
       this.selectedGameSeries="Select a game series";
     }
   }
-  
-  public selectedGameSeries: string;
 
   setGameSeries($event: { target: { innerHTML: any; }; }){
-    this.model.gameSeries=$event.target.innerHTML;
+    this.model.gameSeries=$event.target.innerHTML.trim();
     this.selectedGameSeries=this.model.gameSeries;
   }
 
