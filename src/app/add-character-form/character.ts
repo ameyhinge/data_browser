@@ -3,5 +3,5 @@ export class Character {
         public gameName: string,
         public characterFirstName: string,
         public characterLastName: string
-    ){}
+    ) { }
 }

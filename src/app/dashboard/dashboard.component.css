@@ -1,67 +1,80 @@
-.add-box-container, .add-option, .add-box-container > div, .add-option-bar{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.add-box-container{
-    position: absolute;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 6rem;
-    margin-bottom: 1rem;
-    background-color:rgb(40, 40, 40);
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.add-box-container > div{
-    margin-top:0.4rem;
-}
-.add-option-info{
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-.add-option-bar{
-    flex-wrap: wrap;
-    width: 80%;
-}
-.add-option-bar > div{
-    margin-left: 1rem;
-}
-.add-option{
-    min-width: 10rem;
-    max-width: 10rem;
-    min-height: 10rem;
-    max-width: 10rem;
-    align-items: flex-end;
-    box-sizing: border-box;
-    border: 1px solid transparent;
-    border-radius: 1rem;
-    padding:0.5rem;
-    transition: color 0.1s, background-color 0.1s, box-shadow 0.2s;
-    background-image: url("../../assets/default-pic.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 60%;
-}
-.add-option:hover{
-    background-color: rgba(255,255,255,0.2);
-    cursor: pointer;
-    box-shadow:  0rem 0rem 1.5rem 0.2rem rgba(0, 0, 0, 0.5);
-}
-.add-option:active{
-    background-color: rgb(40, 40, 40);
-    box-shadow:  0rem 0rem 1rem 0.2rem rgba(0, 0, 0, 0.5);
-    color: springgreen;
-}
-.game-series{
-    background-image: url("../../assets/game.svg");
+.add-box-container,
+.add-option,
+.add-box-container>div,
+.add-option-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media screen and (max-width:420px){
-    .add-option-bar{
-        flex-direction: column;
-    }
-    .add-option{
-        min-width: 100%;
-    }
+.add-box-container {
+  position: absolute;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 6rem;
+  margin-bottom: 1rem;
+  background-color: rgb(40, 40, 40);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.add-box-container>div {
+  margin-top: 0.4rem;
+}
+
+.add-option-info {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.add-option-bar {
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.add-option-bar>div {
+  margin-left: 1rem;
+}
+
+.add-option {
+  min-width: 10rem;
+  max-width: 10rem;
+  min-height: 10rem;
+  max-width: 10rem;
+  align-items: flex-end;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  transition: color 0.1s, background-color 0.1s, box-shadow 0.2s;
+  background-image: url("../../assets/default-pic.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+}
+
+.add-option:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  box-shadow: 0rem 0rem 1.5rem 0.2rem rgba(0, 0, 0, 0.5);
+}
+
+.add-option:active {
+  background-color: rgb(40, 40, 40);
+  box-shadow: 0rem 0rem 1rem 0.2rem rgba(0, 0, 0, 0.5);
+  color: springgreen;
+}
+
+.game-series {
+  background-image: url("../../assets/game.svg");
+}
+
+@media screen and (max-width:420px) {
+  .add-option-bar {
+    flex-direction: column;
+  }
+
+  .add-option {
+    min-width: 100%;
+  }
 }

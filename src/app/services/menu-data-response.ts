@@ -1,4 +1,4 @@
-export interface menuDataResponse{
-    gameSeriesList : string[],
-    gameList : string[],
+export interface menuDataResponse {
+    gameSeriesList: string[],
+    gameList: string[],
 }

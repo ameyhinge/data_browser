@@ -1,163 +1,196 @@
-input[type="text"]{
-    box-sizing: border-box;
-    background-color: rgb(80, 80, 80);
-    color: rgba(240,240,240);
+input[type="text"] {
+  box-sizing: border-box;
+  background-color: rgb(80, 80, 80);
+  color: rgba(240, 240, 240);
 }
-.app-container{
-    position: relative;
-    width: 100%;
+
+.app-container {
+  position: relative;
+  width: 100%;
 }
-.control-group, .form-layout{
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    margin-bottom: 1rem;
+
+.control-group,
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin-bottom: 1rem;
 }
-.form-layout{
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background-color:rgb(40, 40, 40);
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-bottom: 5rem;
-    padding-top: 6rem;
+
+.form-layout {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(40, 40, 40);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 5rem;
+  padding-top: 6rem;
 }
-.data-section{
-    padding-top: 4rem;
+
+.data-section {
+  padding-top: 4rem;
 }
-.drop-down-box{
-    display: none;
-    min-height:2rem;
-    max-height: 12rem;
-    background-color: rgb(40, 40, 40);
-    box-sizing: border-box;
-    border: 1px solid springgreen;
-    flex-direction: column;
-    overflow-y: auto;
-    z-index: 2;
-    box-shadow: 0.2rem 0.2rem 0.8rem 0.2rem rgba(0,0,0,0.5);
+
+.drop-down-box {
+  display: none;
+  min-height: 2rem;
+  max-height: 12rem;
+  background-color: rgb(40, 40, 40);
+  box-sizing: border-box;
+  border: 1px solid springgreen;
+  flex-direction: column;
+  overflow-y: auto;
+  z-index: 2;
+  box-shadow: 0.2rem 0.2rem 0.8rem 0.2rem rgba(0, 0, 0, 0.5);
 }
-.top-bar{
-    height: 3rem;
-    width: 100%;
-    display: flex;
-    position: fixed;
-    justify-content: center;
-    align-items: center;
-    background-color: springgreen;
-    z-index: 99;
+
+.top-bar {
+  height: 3rem;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  background-color: springgreen;
+  z-index: 99;
 }
-.title-link{
-    height: 100%;
-    width:100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+.title-link {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.holder{
-    min-width:3rem;
-    max-width: 3rem;
-    height: 100%;
+
+.holder {
+  min-width: 3rem;
+  max-width: 3rem;
+  height: 100%;
 }
-.settings-button{
-    min-width:3rem;
-    max-width: 3rem;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    transition: background, color 0.2s,0.2s;
-    cursor: pointer;
+
+.settings-button {
+  min-width: 3rem;
+  max-width: 3rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  transition: background, color 0.2s, 0.2s;
+  cursor: pointer;
 }
-.settings-button:hover{
-    background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5)), linear-gradient(springgreen,springgreen);
-    color: white;
+
+.settings-button:hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), linear-gradient(springgreen, springgreen);
+  color: white;
 }
-.settings-button:active{
-    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), linear-gradient(springgreen,springgreen);
-    color: white;
+
+.settings-button:active {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), linear-gradient(springgreen, springgreen);
+  color: white;
 }
-.submit-button, .button{
-    width: 6rem;
-    height: 2.4rem;
-    appearance: none;
-    box-sizing: border-box;
-    border: 1px solid transparent;
-    border-radius: 2rem;
-    background-color: springgreen;
-    transition: color 0.1s, background-color 0.1s, box-shadow 0.2s;
-    margin-left: 1rem;
-    margin-right: 1rem;
+
+.submit-button,
+.button {
+  width: 6rem;
+  height: 2.4rem;
+  appearance: none;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 2rem;
+  background-color: springgreen;
+  transition: color 0.1s, background-color 0.1s, box-shadow 0.2s;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
-.button{
-    background-color: rgb(40, 40, 40);
-    color: white;
+
+.button {
+  background-color: rgb(40, 40, 40);
+  color: white;
 }
-.submit-button:hover, .button:hover{  
-    cursor: pointer;
-    box-shadow:  0rem 0rem 0.2rem 0.1rem springgreen;
+
+.submit-button:hover,
+.button:hover {
+  cursor: pointer;
+  box-shadow: 0rem 0rem 0.2rem 0.1rem springgreen;
 }
-.button:hover{
-    box-shadow:  0rem 0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
+
+.button:hover {
+  box-shadow: 0rem 0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
 }
-.submit-button:active, .button:active{
-    box-shadow:  0rem 0rem 0.1rem 0.05rem springgreen;
-    color: white;
+
+.submit-button:active,
+.button:active {
+  box-shadow: 0rem 0rem 0.1rem 0.05rem springgreen;
+  color: white;
 }
-.button:active{
-    box-shadow: 0rem 0rem 0.1rem 0.05rem rgba(0, 0, 0, 0.5);
-    color: springgreen;
+
+.button:active {
+  box-shadow: 0rem 0rem 0.1rem 0.05rem rgba(0, 0, 0, 0.5);
+  color: springgreen;
 }
-.submit-button:focus, .button:focus, .text-box:focus{
-    outline: none;
+
+.submit-button:focus,
+.button:focus,
+.text-box:focus {
+  outline: none;
 }
-.text-box:focus{
-    background-color: rgb(20, 20, 20);
-    box-shadow: 0.2rem 0.2rem 0.8rem 0.2rem rgba(0,0,0,0.5);
+
+.text-box:focus {
+  background-color: rgb(20, 20, 20);
+  box-shadow: 0.2rem 0.2rem 0.8rem 0.2rem rgba(0, 0, 0, 0.5);
 }
-.drop-down-item{
-    box-sizing: border-box;
-    padding: 0.4rem;
+
+.drop-down-item {
+  box-sizing: border-box;
+  padding: 0.4rem;
 }
-.drop-down-item:hover{
-    background-color: rgba(0, 255, 128, 0.5);
+
+.drop-down-item:hover {
+  background-color: rgba(0, 255, 128, 0.5);
 }
-.validation-alert{
-    width: 60%;
-    color: black;
-    background-color: rgb(255,255,0);
-    box-sizing: border-box;
-    padding: 0.4rem;
-    position: absolute;
+
+.validation-alert {
+  width: 60%;
+  color: black;
+  background-color: rgb(255, 255, 0);
+  box-sizing: border-box;
+  padding: 0.4rem;
+  position: absolute;
 }
-.text-box, .control-bar{
-    height: 2.4rem;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid springgreen;
-    background-color: rgb(80, 80, 80);
-    color: rgba(240,240,240);
-    transition: background-color 0.2s;
-    padding: 0.4rem;
-    font-size: 1.1rem;
+
+.text-box,
+.control-bar {
+  height: 2.4rem;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid springgreen;
+  background-color: rgb(80, 80, 80);
+  color: rgba(240, 240, 240);
+  transition: background-color 0.2s;
+  padding: 0.4rem;
+  font-size: 1.1rem;
 }
-.control-bar{
-    height: 4.2rem;
-    position: fixed;
-    border: none;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    padding-left: 1rem;
+
+.control-bar {
+  height: 4.2rem;
+  position: fixed;
+  border: none;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
 }
-.top-label{
-    font-size: 2rem;
-    margin-bottom: 1rem;
+
+.top-label {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
-.control-label{
-    margin-bottom: 0.4rem;
-    margin-top: 0.4rem;
+
+.control-label {
+  margin-bottom: 0.4rem;
+  margin-top: 0.4rem;
 }

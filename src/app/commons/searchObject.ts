@@ -3,5 +3,5 @@ export class SearchObject {
         public Name,
         public searchFullMatch: string,
         public searchMatchTill: number
-    ){}
+    ) { }
 }

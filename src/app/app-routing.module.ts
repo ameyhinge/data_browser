@@ -7,12 +7,12 @@ import { AddCharacterFormComponent } from './add-character-form/add-character-fo
 import { GameViewComponent } from './game-view/game-view.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'addgame', component: AddGameFormComponent},
-  {path: 'addcharacter', component: AddCharacterFormComponent},
-  {path: 'gameview/:id', component: GameViewComponent}
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'addgame', component: AddGameFormComponent },
+  { path: 'addcharacter', component: AddCharacterFormComponent },
+  { path: 'game/:id', component: GameViewComponent }
 ];
 
 @NgModule({

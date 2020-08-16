@@ -6,7 +6,8 @@
             Please select a valid game series.
         </div>
         <div class="control">
-            <input (keyup)="onSearchType($event)" #gameSeriesSearchBox #gameSeries=ngModel [(ngModel)]="model.gameSeries" name="gameSeries" class="text-box" type="text" required />
+            <input (keyup)="onSearchType($event)" #gameSeriesSearchBox #gameSeries=ngModel
+                [(ngModel)]="model.gameSeries" name="gameSeries" class="text-box" type="text" required />
             <div tabindex="0" #gameSeriesSearchClicker (click)="showDropDownGameSeries($event)" class="text-box">
                 {{selectedGameSeries}}
             </div>
@@ -23,11 +24,12 @@
             Please enter a valid game name.
         </div>
         <div class="control">
-            <input #gameNameBox #game=ngModel [(ngModel)]="model.gameName" name="gameName" class="text-box" type="text" required whiteSpaceValidator />
+            <input #gameNameBox #game=ngModel [(ngModel)]="model.gameName" name="gameName" class="text-box" type="text"
+                required whiteSpaceValidator />
         </div>
     </div>
     <div class="control-bar">
-        <input type="submit" class="submit-button"/>
-        <input type="button" class="button" value="Clear"/>
+        <input type="submit" class="submit-button" />
+        <input type="button" class="button" value="Clear" />
     </div>
 </form>

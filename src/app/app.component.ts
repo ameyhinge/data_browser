@@ -9,18 +9,18 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'BrowserClient';
 
-  constructor(private router: Router){
-    document.body.style.margin="0";
-    document.body.style.backgroundColor="rgb(40,40,40)";
+  constructor(private router: Router) {
+    document.body.style.margin = "0";
+    document.body.style.backgroundColor = "rgb(40,40,40)";
   }
 
-  redirect(){
-    if(this.router.url.endsWith("dashboard")){
+  redirect() {
+    if (this.router.url.endsWith("dashboard")) {
       this.router.navigate(['/home']);
-    }else{
+    } else {
       this.router.navigate(['/dashboard']);
     }
-    
+
   }
-  
+
 }

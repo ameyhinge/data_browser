@@ -6,7 +6,8 @@
             Please select a valid game.
         </div>
         <div class="control">
-            <input (keyup)="onSearchType($event)" #gameSearchBox #gameName=ngModel [(ngModel)]="model.gameName" name="gameName" class="text-box" type="text" required />
+            <input (keyup)="onSearchType($event)" #gameSearchBox #gameName=ngModel [(ngModel)]="model.gameName"
+                name="gameName" class="text-box" type="text" required />
             <div tabindex="0" #gameSearchClicker (click)="showDropDownGame($event)" class="text-box">
                 {{selectedGame}}
             </div>
@@ -19,24 +20,28 @@
     </div>
     <div class="control-group">
         <div class="control-label">Character first name</div>
-        <div class="validation-alert" *ngIf="characterFirstName.invalid && (characterFirstName.dirty || characterFirstName.touched)">
+        <div class="validation-alert"
+            *ngIf="characterFirstName.invalid && (characterFirstName.dirty || characterFirstName.touched)">
             Please enter a valid first name.
         </div>
         <div class="control">
-            <input #characterFirstNameBox #characterFirstName=ngModel [(ngModel)]="model.characterFirstName" name="characterFirstName" class="text-box" type="text" required whiteSpaceValidator />
+            <input #characterFirstNameBox #characterFirstName=ngModel [(ngModel)]="model.characterFirstName"
+                name="characterFirstName" class="text-box" type="text" required whiteSpaceValidator />
         </div>
     </div>
     <div class="control-group">
         <div class="control-label">Character last name</div>
-        <div class="validation-alert" *ngIf="characterLastName.invalid && (characterLastName.dirty || characterLastName.touched)">
+        <div class="validation-alert"
+            *ngIf="characterLastName.invalid && (characterLastName.dirty || characterLastName.touched)">
             Please enter a valid last name.
         </div>
         <div class="control">
-            <input #characterLastNameBox #characterLastName=ngModel [(ngModel)]="model.characterLastName" name="characterLastName" class="text-box" type="text" required whiteSpaceValidator />
+            <input #characterLastNameBox #characterLastName=ngModel [(ngModel)]="model.characterLastName"
+                name="characterLastName" class="text-box" type="text" required whiteSpaceValidator />
         </div>
     </div>
     <div class="control-bar">
-        <input type="submit" class="submit-button"/>
-        <input type="button" class="button" value="Clear"/>
+        <input type="submit" class="submit-button" />
+        <input type="button" class="button" value="Clear" />
     </div>
 </form>

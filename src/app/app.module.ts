@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,8 @@ import { CommonUtils } from './commons/CommonUtils';
 import { MenuDataService } from './services/menu-data.service';
 import { SearchService } from './services/search-service';
 import { GameViewComponent } from './game-view/game-view.component';
+import { SuggestedContentComponent } from './suggested-content/suggested-content.component';
+import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { GameViewComponent } from './game-view/game-view.component';
     AddGameFormComponent,
     WhiteSpaceValidator,
     AddCharacterFormComponent,
-    GameViewComponent
+    GameViewComponent,
+    SuggestedContentComponent,
+    AdvancedSearchComponent
   ],
   imports: [
     BrowserModule,

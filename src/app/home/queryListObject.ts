@@ -1,4 +1,4 @@
-export class queryObject{
+export class queryObject {
     public rowNum: string;
     public operation: string;
     public bracketOpen: string;

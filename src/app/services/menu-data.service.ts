@@ -12,14 +12,14 @@ export class MenuDataService {
 
   constructor(private http: HttpClient) { }
 
-  getMenuData(menuType: string): Observable<any>{
-      // Get Game Series List
-      if(menuType==="gameSeries"){
-        return this.http.get<any>(this.getGameSeriesURL);
-      } 
-      // Get Game List
-      else if(menuType==="game"){
-        return this.http.get<any>(this.getGameURL);
-      }
+  getMenuData(menuType: string): Observable<any> {
+    // Get Game Series List
+    if (menuType === "gameSeries") {
+      return this.http.get<any>(this.getGameSeriesURL);
+    }
+    // Get Game List
+    else if (menuType === "game") {
+      return this.http.get<any>(this.getGameURL);
+    }
   }
 }
